@@ -1,0 +1,80 @@
+<div ng-controller="DocumentsCtrl" class="container">
+
+
+  <div class="panel panel-default">
+    <div class="panel-heading">Upload document</div>
+    <div class="panel-body">
+      <form ng-submit="upload()">
+        <input id="input-id" name="file" nv-file-select uploader="uploader" type="file" class="file" showPreview="false">
+      </form>
+    </div>
+  </div>
+
+
+  <div class="panel panel-default">
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Date</th>
+          <th>Shingles count</th>
+          <th>Check</th>
+          <th>Remove</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="document in documents">
+          <td>{{document.id}}</td>
+          <td>{{document.date}}</td>
+          <td>{{document.shinglesCount}}</td>
+          <td><input ng-change="selectDocument(document.id)" ng-disabled="isDisabled(document.id)" ng-model="myValue" type="checkbox"
+              value="{{document.id}}"></td>
+          <td>
+            <button ng-click="selectDocumentFoRemove(document)" type="button" class="btn btn-default" data-toggle="modal" data-target=".bs-example-modal-sm">
+              <span class="glyphicon glyphicon-trash"></span>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <button ng-click="compare()" ng-disabled="isCompareDisabled()" type="button" class="btn btn-primary">Compare</button>
+
+  <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Delete document</h4>
+        </div>
+        <div class="modal-body center">
+          <p>Are you sure you want to delete this document: <br><b>{{deleteDocument.id}}</b></p>
+        </div>
+        <div class="modal-footer">
+          <button ng-click="delete(deleteDocument.id)" type="button" class="btn btn-primary" data-dismiss="modal">Delete</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="modal fade error-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+    <div class="modal-dialog modal-sm" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Error</h4>
+        </div>
+        <div class="modal-body center">
+          <p>Document already exists.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+</div>
