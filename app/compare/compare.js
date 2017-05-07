@@ -31,12 +31,12 @@ function($scope, $rootScope, $location, $sce, similarityService, documentService
 
       documentService.getById(documentId1).then(function(data) {
         $scope.document1 = data;
-        $scope.text1 = $scope.highlight($scope.document1.text, $scope.similarity.rangeDocument1);
+        $scope.text1 = $scope.highlight($scope.document1.text, $scope.similarity.ranges[documentId1]);
       });
 
       documentService.getById(documentId2).then(function(data) {
         $scope.document2 = data;
-        $scope.text2 = $scope.highlight($scope.document2.text, $scope.similarity.rangeDocument2);
+        $scope.text2 = $scope.highlight($scope.document2.text, $scope.similarity.ranges[documentId2]);
       });
 
     });
