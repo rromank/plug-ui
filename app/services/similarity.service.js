@@ -12,8 +12,17 @@ angular.module('myApp.similarity.service', [])
             });
   }
 
+  var shingleAll = function(documentId) {
+    return $http.get('http://localhost:8082/similarity/shingle/complex', {
+              params: {document: documentId}
+            }).then(function(response) {
+              return response.data;
+            });
+  }
+
   return {
-    shingle: shingle
+    shingle: shingle,
+    shingleAll: shingleAll
   }
 
 });

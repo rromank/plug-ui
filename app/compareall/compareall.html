@@ -1,0 +1,38 @@
+<div ng-controller="CompareAllCtrl" class="container-fluid">
+
+    <div ng-if="similarity.coefficient != -1" class="panel panel-default">
+        <div class="panel-heading">Plagiarism quantity</div>
+        <div class="panel-body">
+
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" aria-valuenow="similarity.coefficient" aria-valuemin="0" aria-valuemax="100"
+                    style="width: {{similarity.coefficient}}%;">
+                    {{similarity.coefficient}}%
+                </div>
+            </div>
+            
+            Matches in {{similarity.similarities.length}} documents
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <p ng-bind-html="document.text"></p>
+        </div>
+        <div class="col-sm-6">
+            <uib-accordion close-others="oneAtATime">
+                <div ng-repeat="document in similarity.similarities">
+                    <div uib-accordion-group class="panel-default" heading="{{document.coefficient}}% plagiarized">
+                        <p ng-bind-html="texts[document.documentId]"></p>
+                    </div>
+                    </br>
+                </div>
+
+
+            </uib-accordion>
+        </div>
+    </div>
+
+
+
+</div>

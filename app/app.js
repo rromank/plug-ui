@@ -4,6 +4,7 @@
 angular.module('myApp', [
   'ngRoute',
   'myApp.compare',
+  'myApp.compareall',
   'myApp.documents',
   'myApp.document.service',
   'myApp.similarity.service',

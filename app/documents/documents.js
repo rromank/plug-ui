@@ -75,11 +75,12 @@ angular.module('myApp.documents', ['ngRoute', 'ui.bootstrap'])
       allowedFileExtensions: ['docx']
     }).on('fileuploaded', function(event, data, id, index) {
       console.log(data.response);
+      var documentId = data.response.message;
       if (data.response.type === 'ERROR') {
         $scope.showModal();
       } else {
         documentService.getAll().then(function(data) {
-          $scope.documents = data;
+          $location.path('/compareall').search({document: documentId});
         });
       }
     });
