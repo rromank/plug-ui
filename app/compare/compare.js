@@ -12,7 +12,7 @@ angular.module('myApp.compare', ['ngRoute', 'ui.bootstrap'])
 .controller('CompareCtrl', ['$scope', '$rootScope', '$location', '$sce', 'similarityService', 'documentService',  
 function($scope, $rootScope, $location, $sce, similarityService, documentService) {
   $rootScope.currentPage = 'compare';
-  $scope.similarity;
+  $scope.similarity = {coefficient: -1};
   $scope.document1;
   $scope.document2;
 
@@ -29,14 +29,26 @@ function($scope, $rootScope, $location, $sce, similarityService, documentService
     similarityService.shingle(documentId1, documentId2).then(function(data) {
       $scope.similarity = data;
 
-      documentService.getById(documentId1).then(function(data) {
+      documentService.getByIdWithText(documentId1).then(function(data) {
         $scope.document1 = data;
-        $scope.text1 = $scope.highlight($scope.document1.text, $scope.similarity.ranges[documentId1]);
+        if ($scope.similarity.coefficient === 0) {
+          console.log('1 = 0');
+          $scope.text1 = $sce.trustAsHtml($scope.document1.text);
+        } else {
+          console.log('1 = 1');
+          $scope.text1 = $scope.highlight($scope.document1.text, $scope.similarity.ranges[documentId1]);
+        }
       });
 
-      documentService.getById(documentId2).then(function(data) {
+      documentService.getByIdWithText(documentId2).then(function(data) {
         $scope.document2 = data;
-        $scope.text2 = $scope.highlight($scope.document2.text, $scope.similarity.ranges[documentId2]);
+        if ($scope.similarity.coefficient === 0) {
+          console.log('2 = 0');
+          $scope.text2 = $sce.trustAsHtml($scope.document2.text);
+        } else {
+          console.log('2 = 1');
+          $scope.text2 = $scope.highlight($scope.document2.text, $scope.similarity.ranges[documentId2]);
+        }
       });
 
     });

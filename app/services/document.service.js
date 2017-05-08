@@ -12,7 +12,15 @@ angular.module('myApp.document.service', [])
   }
 
   var getAll = function () {
-    return $http.get('http://localhost:8082/document').then(function (response) {
+    return $http.get('http://localhost:8082/document')
+    .then(function (response) {
+      return response.data;
+    });
+  }
+
+  var getByIdWithText = function(id) {
+    return $http.get('http://localhost:8082/document/text/' + id)
+    .then(function (response) {
       return response.data;
     });
   }
@@ -27,7 +35,8 @@ angular.module('myApp.document.service', [])
   return {
     getById: getById,
     getAll: getAll,
-    deleteById: deleteById
+    deleteById: deleteById,
+    getByIdWithText: getByIdWithText
   }
 
 });

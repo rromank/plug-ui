@@ -16,16 +16,17 @@
     <table class="table">
       <thead>
         <tr>
-          <th>Id</th>
+          <th>Name</th>
           <th>Date</th>
           <th>Shingles count</th>
           <th>Check</th>
           <th>Remove</th>
+          <th>Check</th>
         </tr>
       </thead>
       <tbody>
         <tr ng-repeat="document in documents">
-          <td>{{document.id}}</td>
+          <td>{{document.filename}}</td>
           <td>{{document.date}}</td>
           <td>{{document.shinglesCount}}</td>
           <td><input ng-change="selectDocument(document.id)" ng-disabled="isDisabled(document.id)" ng-model="myValue" type="checkbox"
@@ -33,6 +34,11 @@
           <td>
             <button ng-click="selectDocumentFoRemove(document)" type="button" class="btn btn-default" data-toggle="modal" data-target=".bs-example-modal-sm">
               <span class="glyphicon glyphicon-trash"></span>
+            </button>
+          </td>
+          <td>
+            <button ng-click="selectDocumentFoRemove(document)" type="button" class="btn btn-default" data-toggle="modal" data-target=".bs-example-modal-sm">
+              <span class="glyphicon glyphicon-check"></span>
             </button>
           </td>
         </tr>

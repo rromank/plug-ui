@@ -1,12 +1,15 @@
 <div ng-controller="CompareCtrl" class="container">
 
-  <div class="alert alert-warning" role="alert">Similarity: {{similarity.coefficient}}</div>
+  <div ng-if="similarity.coefficient != -1" class="alert alert-warning" role="alert">Plagiarism quantity: {{similarity.coefficient}} % duplicate</div>
 
-<div class="row">
-  <div class="col-sm-6"><p ng-bind-html="text1"></p></div>
-  <div class="col-sm-6"><p ng-bind-html="text2"></p></div>
-</div>
-
+  <div class="row">
+    <div class="col-sm-6">
+      <p ng-bind-html="text1"></p>
+    </div>
+    <div class="col-sm-6">
+      <p ng-bind-html="text2"></p>
+    </div>
+  </div>
 
 
 </div>
