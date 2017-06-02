@@ -6,6 +6,7 @@ angular.module('myApp', [
   'myApp.compare',
   'myApp.compareall',
   'myApp.documents',
+  'myApp.upload',
   'myApp.document.service',
   'myApp.similarity.service',
   'myApp.version',
@@ -14,5 +15,5 @@ angular.module('myApp', [
 config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
   $locationProvider.hashPrefix('!');
 
-  $routeProvider.otherwise({redirectTo: '/documents'});
+  $routeProvider.otherwise({redirectTo: '/upload'});
 }]);

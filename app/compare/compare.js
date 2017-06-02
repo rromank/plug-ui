@@ -32,10 +32,8 @@ function($scope, $rootScope, $location, $sce, similarityService, documentService
       documentService.getByIdWithText(documentId1).then(function(data) {
         $scope.document1 = data;
         if ($scope.similarity.coefficient === 0) {
-          console.log('1 = 0');
           $scope.text1 = $sce.trustAsHtml($scope.document1.text);
         } else {
-          console.log('1 = 1');
           $scope.text1 = $scope.highlight($scope.document1.text, $scope.similarity.ranges[documentId1]);
         }
       });
@@ -43,10 +41,8 @@ function($scope, $rootScope, $location, $sce, similarityService, documentService
       documentService.getByIdWithText(documentId2).then(function(data) {
         $scope.document2 = data;
         if ($scope.similarity.coefficient === 0) {
-          console.log('2 = 0');
           $scope.text2 = $sce.trustAsHtml($scope.document2.text);
         } else {
-          console.log('2 = 1');
           $scope.text2 = $scope.highlight($scope.document2.text, $scope.similarity.ranges[documentId2]);
         }
       });

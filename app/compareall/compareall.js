@@ -47,7 +47,7 @@ function($scope, $rootScope, $location, $sce, similarityService, documentService
 
     $scope.highlight = function(text, ranges) {
     if (ranges.length === 0) {
-      return text;
+      return $sce.trustAsHtml(text);
     }
     
     var plain = [];

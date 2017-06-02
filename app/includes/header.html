@@ -1,11 +1,12 @@
 <nav class="navbar navbar-default">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="#">Brand</a>
+            <a class="navbar-brand" href="#">Plagiarism checker</a>
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
+                <li ng-class="{active: currentPage=='upload'}"><a href="#!/upload">Upload</a></li>
                 <li ng-class="{active: currentPage=='documents'}"><a href="#!/documents">Documents</a></li>
                 <li ng-class="{active: currentPage=='compare'}"><a href="#!/compare">Compare 2 documents</a></li>
             </ul>

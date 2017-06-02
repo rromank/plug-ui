@@ -13,7 +13,7 @@ angular.module('myApp.similarity.service', [])
   }
 
   var shingleAll = function(documentId) {
-    return $http.get('http://localhost:8082/similarity/shingle/complex', {
+    return $http.get('http://localhost:8082/similarity/minhash/complex', {
               params: {document: documentId}
             }).then(function(response) {
               return response.data;
